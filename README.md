@@ -12,7 +12,7 @@
 
 ## **_Description_**
 
-This is a resume optimizing chrome extension written in JavaScript that leverages React and IndexedDB.
+This is a resume curating chrome extension written in JavaScript that leverages React and IndexedDB.
 
 ---
 
