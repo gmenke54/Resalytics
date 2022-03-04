@@ -1,16 +1,24 @@
+const fs = require('fs');
 const obj = require('./keywords.json')
 
-for (let i=0; i<obj.keywords.length; i++){
-  console.log(obj.keywords[i])
-}
+let newObj = {}
 
-// Desired Output:
-// {
-//   'react': ['reactjs', 'react.js'],
-//   'reactjs': ['react', 'react.js'],
-//   'react.js': ['react', 'reactjs'],
-//   'vue': ['vue.js', 'vuejs'],
-//   'vue.js': ['vue', 'vuejs'],
-//   'vuejs': ['vue', 'vue.js']
-//   ...
-// }
+for (let i=0; i<obj.keywords.length; i++){
+  for (let x=0; x<obj.keywords[i].length; x++){
+    let alts = []
+    for (let y=0; y<obj.keywords[i].length; y++){
+      if (y!==x){
+        alts.push(obj.keywords[i][y])
+      }
+    }
+    newObj[obj.keywords[i][x]]=alts
+  }
+}
+const data = JSON.stringify(newObj)
+
+fs.writeFile('./public/keywords-object.json', data, (err) => {
+    if (err) {
+        throw err;
+    }
+    console.log("JSON data is saved.");
+});
