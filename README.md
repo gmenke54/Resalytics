@@ -40,7 +40,7 @@ Final Application Screenshot:
 
 ## **_Getting Started_**
 
-#### [Published on the Chrome Store](myketopal.surge.sh/)
+#### [Published on the Chrome Web Store](myketopal.surge.sh/)
 
 1. Install the extension 
 2. Navigate to a job listing 
