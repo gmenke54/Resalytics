@@ -2,6 +2,11 @@
   "name": "Resalytics",
   "description": "Automatically curate your resume to match any job description!",
   "version": "1.0",
+  "icons": {
+    "16": "16.ico",
+    "48": "48.ico",
+    "128": "128.ico"
+  },
   "manifest_version": 3,
   "action": {
     "default_popup": "popup.html"
