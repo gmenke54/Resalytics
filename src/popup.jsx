@@ -4,7 +4,7 @@ import {render} from "react-dom";
 function Popup() {
   return (
     <div>
-      <h1>Hello, world!</h1>
+      <input type="file" accept=".docx" />
     </div>
   )
 }
