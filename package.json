@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gmenke54/Resalytics#readme",
   "dependencies": {
+    "axios": "^0.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
