@@ -4,7 +4,8 @@
   "description": "### Marvel Johnson  #### [GitHub](https://github.com/MarvJohnson) | [LinkedIn](https://www.linkedin.com/in/marvel-johnson/) | [Portfolio](https://marveljohnson.surge.sh/)",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "npm run keywords && webpack --config webpack.config.js",
+    "keywords": "node keyword-converter.js"
   },
   "repository": {
     "type": "git",
