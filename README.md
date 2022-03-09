@@ -1,9 +1,11 @@
 # **Resalytics Resume Optimizing Chrome Extension**
 
-### Marvel Johnson 
+### Marvel Johnson
+
 #### [GitHub](https://github.com/MarvJohnson) | [LinkedIn](https://www.linkedin.com/in/marvel-johnson/) | [Portfolio](https://marveljohnson.surge.sh/)
 
 ### Grant Menke
+
 #### [GitHub](https://github.com/gmenke54) | [LinkedIn](https://www.linkedin.com/in/grant-menke-b81490223/) | [Portfolio](https://grantmenke.com/)
 
 ### 3/7/2022
@@ -12,7 +14,7 @@
 
 ## **_Description_**
 
-This is a resume curating chrome extension written in JavaScript that leverages React and IndexedDB.
+This is a resume curating chrome extension written in JavaScript and Python that leverages React and IndexedDB.
 
 ---
 
@@ -25,15 +27,17 @@ Final Application Screenshot:
 
 ## **_Technologies_**
 
+- JavaScript
+- Python
 - React
 - IndexedDB
-- JavaScript
 
 ---
 
 ## **_Roadmap (Future Updates)_**
 
 - ~~Create the React App~~
+- ~~Integrate python-docx library to read and update files~~
 - Store users multipage resume leveraging IndexeDB
 
 ---
@@ -42,10 +46,10 @@ Final Application Screenshot:
 
 #### [Published on the Chrome Web Store](myketopal.surge.sh/)
 
-1. Install the extension 
-2. Navigate to a job listing 
-3. Upload the untrimmed multipage version of your resume 
-4. Highlight the job description 
+1. Install the extension
+2. Navigate to a job listing
+3. Upload the untrimmed multipage version of your resume
+4. Highlight the job description
 5. Submit the curated resume to the current position
 
 ---
@@ -54,6 +58,6 @@ Final Application Screenshot:
 
 **Logo Designed Using:** [Canva](https://www.canva.com/)
 
-**File Converter API:** [ConvertAPI](https://www.convertapi.com/)
+**Python Docx Library:** [Python-Docx](https://pypi.org/project/python-docx/)
 
 **IndexeDB Wrapper:** [Jake Archibald](https://github.com/jakearchibald/idb#directly-in-a-browser)
