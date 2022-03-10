@@ -7,6 +7,7 @@ export async function readPage() {
     function: () => {
       console.log('running');
       console.log(window.getSelection().toString());
+      return window.getSelection().toString();
     }
   });
 }

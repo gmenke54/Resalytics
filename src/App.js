@@ -1,3 +1,4 @@
+/*global chrome*/
 import './App.css';
 import { readPage } from './main';
 import axios from 'axios';
@@ -21,10 +22,14 @@ function App() {
     console.log(res);
   };
 
+  const filter = async () => {
+    console.log(await readPage());
+  };
+
   return (
     <div>
       <input type="file" accept=".docx" onChange={handleFileUpload} />
-      <button onClick={readPage}>Save Job Description</button>
+      <button onClick={filter}>Save Job Description</button>
     </div>
   );
 }
