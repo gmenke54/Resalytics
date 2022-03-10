@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run keywords && react-scripts build",
+    "keywords": "node keyword-converter.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
