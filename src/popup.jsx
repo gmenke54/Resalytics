@@ -16,15 +16,16 @@ function Popup() {
 
   function saveJob () {
     console.log('running helper')
-    // let [tab] = chrome.tabs.query({ active: true, currentWindow: true }).then(() => {
-    //   chrome.scripting.executeScript({
-    //     target: { tabId: tab.id },
-    //     file: 'countCharacters.js'
-    //   });
-    // })
+    // console.log(chrome)
+    let [tab] = chrome.tabs.query({ active: true, currentWindow: true }).then(() => {
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        file: 'countCharacters.js'
+      });
+    })
     // chrome.tabs.executeScript(null, { file: 'countCharacters.js' });
     // chrome.scripting.executeScript(null, { file: 'countCharacters.js' });
-    console.log(chrome)
+    // console.log(chrome)
 }
 return (
 <div>
