@@ -1,6 +1,5 @@
 /*global chrome*/
 import './App.css';
-import { readPage } from './main';
 import axios from 'axios';
 
 function App() {
@@ -23,7 +22,16 @@ function App() {
   };
 
   const filter = async () => {
-    console.log(await readPage());
+    let desc = '';
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: () => {
+        console.log('running');
+        desc = window.getSelection().toString();
+        console.log(desc);
+      }
+    });
   };
 
   return (
