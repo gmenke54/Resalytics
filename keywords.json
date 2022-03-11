@@ -1,0 +1,27 @@
+{
+  "keywords": [
+    ["React", "Reactjs", "React.js"],
+    ["Vue", "Vue.js", "Vuejs"],
+    ["front end", "frontend", "front-end"],
+    ["backend", "back-end", "back end"],
+    ["full stack", "full-stack", "fullstack"],
+    ["UI/UX", "UI", "UX"],
+    ["external APIs", "third party APIs", "3rd party APIs"],
+    ["APIs", "API's"],
+    ["REST API", "RESTful API"],
+    ["Node", "Nodejs", "Node.js"],
+    ["software engineer", "software developer", "web developer", "programmer"],
+    ["HTML5", "HTML"],
+    ["CSS", "CSS3"],
+    ["Express", "Express.js", "Expressjs"],
+    ["VS Code", "Visual Studio Code", "VScode"],
+    ["application", "app"],
+    ["RDBMS", "relational database"],
+    ["auth", "authentication"],
+    ["JWT", "JSON web tokens"],
+    ["quickly", "efficiently"],
+    ["tech", "technology"],
+    ["external API", "third party API", "3rd party API"],
+    ["erd", "entity relationship diagram"]
+  ]
+}
