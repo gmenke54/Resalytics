@@ -8,7 +8,8 @@ function App() {
   const [finalWords, setFinalWords] = useState(null);
   const handleFileUpload = async (e) => {
     const formData = new FormData();
-    const file = this.files[0];
+    console.log(e);
+    const file = e.target.files[0];
     // const keywords = { react: ['react.js', 'reactjs'] };
     formData.append('file', file);
     formData.append('keywords', finalWords);
@@ -16,12 +17,25 @@ function App() {
       'https://resalytics.herokuapp.com/',
       formData,
       {
+        responseType: 'arraybuffer',
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Accept:
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
         }
       }
     );
     console.log(res);
+    const f = new Blob([res.data], {
+      type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    });
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    const url = window.URL.createObjectURL(f);
+    a.href = url;
+    a.download = 'test.docx';
+    a.click();
+    document.body.removeChild(a);
   };
 
   const filter = async () => {
