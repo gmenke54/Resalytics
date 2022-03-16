@@ -5,13 +5,13 @@ import axios from 'axios';
 import keywords from './keywords-object.json';
 
 function App() {
-  const [desc, setDesc] = useState(null);
+  const [finalWords, setFinalWords] = useState(null);
   const handleFileUpload = async (e) => {
     const formData = new FormData();
     const file = this.files[0];
-    const keywords = { react: ['react.js', 'reactjs'] };
+    // const keywords = { react: ['react.js', 'reactjs'] };
     formData.append('file', file);
-    formData.append('keywords', keywords);
+    formData.append('keywords', finalWords);
     const res = await axios.post(
       'https://resalytics.herokuapp.com/',
       formData,
@@ -25,6 +25,7 @@ function App() {
   };
 
   const filter = async () => {
+    let job = '';
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
@@ -34,9 +35,24 @@ function App() {
         chrome.runtime.sendMessage({ description: desc });
       }
     });
-    console.log(keywords);
-    chrome.runtime.onMessage.addListener(function (request, sender) {
-      console.log(request.description);
+    chrome.runtime.onMessage.addListener(function (request) {
+      job = request.description;
+      console.log(job);
+      console.log(keywords);
+      const data = {};
+      for (const property in keywords) {
+        let regex = new RegExp(`${property}`, 'i');
+        console.log(property);
+        console.log(regex.source);
+        let match = job.match(regex);
+        console.log(match);
+        if (match) {
+          console.log('match found:', property);
+          data[property] = keywords[property];
+        }
+      }
+      console.log(data);
+      setFinalWords(data);
     });
   };
 
