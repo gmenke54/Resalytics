@@ -22,6 +22,6 @@
     ["quickly", "efficiently"],
     ["tech", "technology"],
     ["external API", "third party API", "3rd party API"],
-    ["erd", "entity relationship diagram"]
+    ["ERD", "entity relationship diagram"]
   ]
 }

@@ -6,6 +6,7 @@ import keywords from './keywords-object.json';
 
 function App() {
   const [finalWords, setFinalWords] = useState(null);
+  const [name, setName] = useState(null);
   const handleFileUpload = async (e) => {
     let job = '';
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -36,11 +37,13 @@ function App() {
       console.log(data);
       setFinalWords(data);
     });
+    console.log('hello');
     const formData = new FormData();
     console.log(e);
     const file = e.target.files[0];
+    console.log(JSON.stringify(finalWords));
     formData.append('file', file);
-    formData.append('keywords', finalWords);
+    formData.append('keywords', JSON.stringify(finalWords));
     const res = await axios.post(
       'https://resalytics.herokuapp.com/',
       formData,
@@ -61,14 +64,32 @@ function App() {
     document.body.appendChild(a);
     const url = window.URL.createObjectURL(f);
     a.href = url;
-    a.download = 'test.docx';
+    if (name) {
+      a.download = `${name}.docx`;
+    } else {
+      a.download = 'resume.docx';
+    }
     a.click();
     document.body.removeChild(a);
   };
 
+  const handleChange = (e) => {
+    setName(e.target.value);
+    console.log(name);
+  };
+
   return (
-    <div>
+    <div class="app">
       <input type="file" accept=".docx" onChange={handleFileUpload} />
+      <div>1. Highlight the job description</div>
+      <div>2. Upload your current resume</div>
+      <div>3. Your curated resume will download automatically</div>
+      <input
+        type="text"
+        placeholder="name your new resume"
+        value={name}
+        onChange={(e) => handleChange(e)}
+      />
     </div>
   );
 }
