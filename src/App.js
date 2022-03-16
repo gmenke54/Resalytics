@@ -29,18 +29,12 @@ function App() {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
       function: () => {
-        // this logs to the windows console:
         const desc = window.getSelection().toString();
         console.log(desc);
-        // this throws error "Uncaught ReferenceError: f is not defined":
-        // console.log(keywords);
         chrome.runtime.sendMessage({ description: desc });
       }
     });
-    // this logs to the extensions console:
     console.log(keywords);
-    // this returns blank string from line 28:
-    // console.log(desc);
     chrome.runtime.onMessage.addListener(function (request, sender) {
       console.log(request.description);
     });
