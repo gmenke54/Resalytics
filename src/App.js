@@ -5,7 +5,6 @@ import axios from 'axios';
 import keywords from './keywords-object.json';
 
 function App() {
-  // const [finalWords, setFinalWords] = useState(null);
   const [name, setName] = useState(null);
   const handleFileUpload = async (e) => {
     let job = '';
@@ -35,8 +34,6 @@ function App() {
         }
       }
       console.log(data);
-      // setFinalWords(data);
-      console.log('hello');
       const formData = new FormData();
       console.log(e);
       const file = e.target.files[0];
