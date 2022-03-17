@@ -5,7 +5,7 @@ import axios from 'axios';
 import keywords from './keywords-object.json';
 
 function App() {
-  const [finalWords, setFinalWords] = useState(null);
+  // const [finalWords, setFinalWords] = useState(null);
   const [name, setName] = useState(null);
   const handleFileUpload = async (e) => {
     let job = '';
@@ -18,15 +18,15 @@ function App() {
         chrome.runtime.sendMessage({ description: desc });
       }
     });
-    chrome.runtime.onMessage.addListener(function (request) {
+    chrome.runtime.onMessage.addListener(async function (request) {
       job = request.description;
       console.log(job);
       console.log(keywords);
       const data = {};
       for (const property in keywords) {
-        let regex = new RegExp(`${property}`, 'i');
+        let regex = new RegExp(`.*(${property})`, 'img');
         console.log(property);
-        console.log(regex.source);
+        console.log(regex);
         let match = job.match(regex);
         console.log(match);
         if (match) {
@@ -35,42 +35,42 @@ function App() {
         }
       }
       console.log(data);
-      setFinalWords(data);
-    });
-    console.log('hello');
-    const formData = new FormData();
-    console.log(e);
-    const file = e.target.files[0];
-    console.log(JSON.stringify(finalWords));
-    formData.append('file', file);
-    formData.append('keywords', JSON.stringify(finalWords));
-    const res = await axios.post(
-      'https://resalytics.herokuapp.com/',
-      formData,
-      {
-        responseType: 'arraybuffer',
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Accept:
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      // setFinalWords(data);
+      console.log('hello');
+      const formData = new FormData();
+      console.log(e);
+      const file = e.target.files[0];
+      console.log(JSON.stringify(data));
+      formData.append('file', file);
+      formData.append('keywords', JSON.stringify(data));
+      const res = await axios.post(
+        'https://resalytics.herokuapp.com/',
+        formData,
+        {
+          responseType: 'arraybuffer',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Accept:
+              'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+          }
         }
+      );
+      console.log(res);
+      const f = new Blob([res.data], {
+        type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      });
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      const url = window.URL.createObjectURL(f);
+      a.href = url;
+      if (name) {
+        a.download = `${name}.docx`;
+      } else {
+        a.download = 'resume.docx';
       }
-    );
-    console.log(res);
-    const f = new Blob([res.data], {
-      type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      a.click();
+      document.body.removeChild(a);
     });
-    const a = document.createElement('a');
-    document.body.appendChild(a);
-    const url = window.URL.createObjectURL(f);
-    a.href = url;
-    if (name) {
-      a.download = `${name}.docx`;
-    } else {
-      a.download = 'resume.docx';
-    }
-    a.click();
-    document.body.removeChild(a);
   };
 
   const handleChange = (e) => {
