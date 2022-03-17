@@ -1,0 +1,10 @@
+.app {
+  background-color: rgb(172, 172, 172);
+  height: 200px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
